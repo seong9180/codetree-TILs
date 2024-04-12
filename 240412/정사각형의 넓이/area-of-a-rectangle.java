@@ -8,6 +8,7 @@ public class Main {
         int input = sc.nextInt();
         
         if(1 <input && input < 5){
+            System.out.println(input*input);
             System.out.println("tiny");
         }
         else{
