@@ -7,7 +7,7 @@ public class Main {
         //입력
         int input = sc.nextInt();
         
-        if(1 <input < 5){
+        if(1 <input && input < 5){
             System.out.println("tiny");
         }
         else{
