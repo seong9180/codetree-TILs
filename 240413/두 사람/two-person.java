@@ -17,9 +17,11 @@ public class Main {
 
         if(a_sex == 'M'){
             if(a_age >=  19) System.out.println("1");
+            else System.out.println("0");
         }
         else if(b_sex == 'M'){
             if(b_age >=  19) System.out.println("1");
+            else System.out.println("0");
         }
         else System.out.println("0");
     }   
