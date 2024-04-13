@@ -18,12 +18,9 @@ public class Main {
         if(a_sex == 'M'){
             if(a_age >=  19) System.out.println("1");
         }
-        if(b_sex == 'M'){
+        else if(b_sex == 'M'){
             if(b_age >=  19) System.out.println("1");
         }
-        if(a_age < 19 && b_age < 19){
-            if(b_sex != 'M' && a_sex != 'M') System.out.println("0");
-        }
-
+        else System.out.println("0");
     }   
 }
