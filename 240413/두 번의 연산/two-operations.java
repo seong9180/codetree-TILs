@@ -8,9 +8,9 @@ public class Main {
 
         if(a % 2 != 0){
             a += 3;
-            if(a % 3 == 0){
+        }
+        if(a % 3 == 0){
                 a /= 3;
-            }
         }
 
         System.out.println(a);
