@@ -10,9 +10,9 @@ public class Main {
         int c = sc.nextInt();
         */
 
-        int max = 0;
+        int max = -100;
         int min = 100;
-        int mid = 0;
+        int mid = -100;
 
         int[] arr = new int[3];
 
