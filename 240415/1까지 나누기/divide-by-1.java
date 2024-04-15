@@ -9,7 +9,7 @@ public class Main {
         int cnt = 0; //나숫셈 진행 횟수 저장 변수
 
         for(int i = 1; i <= n; i ++){
-            if((new_n / i) > 1){
+            if((new_n / i) >= 1){
                 cnt += 1;
                 new_n = n / i;
                 //System.out.print(n + " ");
