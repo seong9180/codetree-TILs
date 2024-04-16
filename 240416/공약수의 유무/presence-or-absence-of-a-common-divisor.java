@@ -11,9 +11,12 @@ public class Main {
             if(1920 % i == 0 && 2880 % i == 0){
                 System.out.println("1");
                 break;
-            }else{
+            }else if(i == b){
                 System.out.println("0");
                 break;
+            }
+            else{
+                continue;
             }
         }
     }
