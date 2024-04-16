@@ -13,7 +13,7 @@ public class Main {
 
             if(arr[i] % 3 == 0){
                 cnt += 1;
-                continue;
+                //continue;
             }
             else{
                 System.out.println("0");
