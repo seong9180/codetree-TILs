@@ -15,8 +15,10 @@ public class Main {
                 continue;
                 //System.out.print(n + " ");
             }
+            else if((new_n / i) == 1){
+                continue;
+            }
             else{
-                //cnt += 1;
                 break;
             }
         }
