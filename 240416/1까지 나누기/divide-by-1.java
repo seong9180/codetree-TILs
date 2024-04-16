@@ -11,14 +11,12 @@ public class Main {
         for(int i = 1; i <= n; i ++){
             if((new_n / i) > 1){
                 cnt += 1;
-                new_n = n / i;
-                continue;
-                //System.out.print(n + " ");
-            }
-            else if((new_n / i) == 1){
+                new_n = new_n / i;
+                //System.out.println(new_n);
                 continue;
             }
             else{
+                cnt += 1;
                 break;
             }
         }
