@@ -19,7 +19,7 @@ public class Main {
             for(int j = 0; j < 4; j++){
                 sum_vertical += arr[i][j];
             }
-            System.out.print(sum_vertical/4 + " ");
+            System.out.printf("%.1f", sum_vertical/4 + " ");
         }
         System.out.println();
 
@@ -32,10 +32,10 @@ public class Main {
             for(int j = 0; j < 2; j++){ // [0][0] + [1][0]
                 sum_horizontal += arr[j][i];
             }
-            System.out.print(sum_horizontal/2 + " ");
+            System.out.printf("%1.f", sum_horizontal/2 + " ");
         }
         System.out.println();
 
-        System.out.println(sum/8);
+        System.out.printf("%1.f", sum/8);
     }
 }
