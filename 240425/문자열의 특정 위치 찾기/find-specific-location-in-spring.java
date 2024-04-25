@@ -11,7 +11,10 @@ public class Main {
         //System.out.println(str);
         //System.out.println(c);
 
-        
-        System.out.print(str.indexOf(c));
+        if(str.indexOf(c) == -1){
+            System.out.print("No");
+        }else{
+            System.out.print(str.indexOf(c));
+        }
     }
 }
