@@ -7,8 +7,8 @@ public class Main {
     static int[] dx = {0,1,-0,-1}; //동남서북 & 격자에서의 이동이기 떄문에 dx = i , dy = j 로 생각. (행/열)
     static int[] dy = {1,0,-1,-0};
 
-    public static boolean inRange(int x, int y, int n) { //격자 범위 안에 값이 존재하는지 확인하는 함수
-        return (0 <= x && x < n && 0 <= y && y < n);
+    public static boolean inRange(int x, int y, int n, int m) { //격자 범위 안에 값이 존재하는지 확인하는 함수
+        return (0 <= x && x < n && 0 <= y && y < m);
     }
 
     public static void main(String[] args) {
@@ -42,7 +42,7 @@ public class Main {
 
             //System.out.println("i : " + i + " j : " + j + " dir_num : " + dir_num);
 
-            if(!inRange(nx,ny,n) || arr[nx][ny] != 0){ //격자 범위 밖을 넘어가려고 하거나, 해당 인덱스에 값이 존재할 때
+            if(!inRange(nx,ny,n,m) || arr[nx][ny] != 0){ //격자 범위 밖을 넘어가려고 하거나, 해당 인덱스에 값이 존재할 때
                 dir_num = (dir_num + 1) % 4; //90도 회전
             }
 
