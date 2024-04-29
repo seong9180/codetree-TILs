@@ -24,7 +24,7 @@ public class Main {
         int c = sc.nextInt();
 
         int dir;
-        char d = sc.next().charAt(0); //
+        char d = sc.next().charAt(0);
         if (d == 'U') {
             dir = 0;
         } else if (d == 'R') {
@@ -34,34 +34,33 @@ public class Main {
         } else {
             dir = 3;
         }
-
+        //(0,0) 을 초기값으로 두고 계산한 뒤, 마지막 좌표만 +1 +1 해주기로
         int x = r - 1;
         int y = c - 1;
 
-        int time = 0; //진행한 시간
+        //int time = 0; //진행한 시간
 
-        //격자 맨 처음 좌표가 1,1
-        //(0,0) 을 초기값으로 두고 계산한 뒤, 마지막 좌표만 +1 +1 해주기로
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (time == t) {
-                    System.out.print(x + 1 + " ");
-                    System.out.print(y + 1);
-                }
-                int nx = x + dx[dir];
-                int ny = y + dy[dir];
 
-                if (!inRange(nx, ny, n)) {
-                    dir = (dir + 1) % 4; //90도 회전
-                    dir = (dir + 1) % 4; //90도 회전 (총 180도 회전)
-                    time ++;
-                    continue;
-                }
-
-                x += dx[dir];
-                y += dy[dir];
-                time ++;
+        for (int j = 0; j <= t; j++) { //j번 루프를 도는 게 time 변수와 하는 일이 같아서, 제거함
+            if (j == t) {
+                System.out.print(x + 1 + " "); //x, y 를 r,c -1 로 설정했기 때문에 다시 바꿔서 출력
+                System.out.print(y + 1);
             }
+            int nx = x + dx[dir];
+            int ny = y + dy[dir];
+
+            if (!inRange(nx, ny, n)) {
+                dir = (dir + 1) % 4; //90도 회전
+                dir = (dir + 1) % 4; //90도 회전 (총 180도 회전)
+                //방향을 반대로 = 180도 회전
+                //time ++;
+                continue; //j는 늘리고(time) 다음번 루프를 진행하기 위함. 방향전환에도 시간을 1 소모하기 위함.
+            }
+
+            x += dx[dir];
+            y += dy[dir];
+            //time ++;
         }
+
     }
 }
