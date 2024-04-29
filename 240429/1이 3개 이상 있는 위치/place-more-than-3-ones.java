@@ -31,30 +31,33 @@ public class Main {
                 System.out.print(arr[i][j] + " ");
             }
             System.out.println();
-        }
-        */
+        }*/
 
-        int x = 0;
-        int y = 0;
-        int cnt_one = 0; //인접한 숫자를 세는 변수 초기화
+
+        int cnt_one = 0; //인접한 숫자를 세는 변수 선언
         int result = 0;
-
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
+                cnt_one = 0;
                 for (int d = 0; d < 4; d++) {
-                    int nx = x + dx[d];
-                    int ny = y + dy[d];
+                    int nx = i + dx[d];
+                    int ny = j + dy[d];
+                    //System.out.println("i = " + i + ", j = " + j + ", d = " + d + ", nx = " + nx + ", ny = " + ny);
 
                     //nx,ny 가 격자 범위 안에 존재하며, 해당 좌표의 값이 1일 때 cnt 증가
                     if (inRange(nx, ny, n) && arr[nx][ny] == 1) {
                         cnt_one ++;
+                        //System.out.println("통과, cnt_one = " + cnt_one);
+                    }else{
+                        //System.out.println("불가, cnt_one = " + cnt_one);
                     }
                 }
-            }
-            //cnt 가 3이상이라면, 문제에서 원하는 조건의 갯수이므로 result를 1 증가
-            if (cnt_one >= 3) {
-                result ++;
+                //System.out.println("------------------------------");
+                //cnt 가 3이상이라면, 문제에서 원하는 조건의 갯수이므로 result를 1 증가
+                if (cnt_one >= 3) {
+                    result ++;
+                }
             }
         }
 
