@@ -45,7 +45,7 @@ public class Main {
             }
 
             //System.out.print("count = " + count + " ");
-            if (count >= 3) {
+            if (count == 3) {
                 System.out.println(1);
             }else{
                 System.out.println(0);
