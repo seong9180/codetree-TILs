@@ -8,7 +8,7 @@ public class Main {
         int b = sc.nextInt();
 
         int max = 0;
-        if(a > b){
+        if(a >= b){
             max = a;
         }else if(b > a){
             max = b;
