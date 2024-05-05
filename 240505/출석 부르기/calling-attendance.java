@@ -16,6 +16,8 @@ public class Main {
             System.out.println(number_2);
         }else if(n == 3){
             System.out.println(number_3);
+        }else{
+            System.out.println("Vacancy");
         }
 
     }
