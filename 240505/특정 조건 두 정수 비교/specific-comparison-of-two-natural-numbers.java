@@ -9,7 +9,7 @@ public class Main {
 
         if( a < b){
             System.out.print(1);
-        }else if(a > b){
+        }else{
             System.out.print(0);
         }
 
@@ -17,7 +17,7 @@ public class Main {
 
         if (a == b){
             System.out.println(1);
-        }else if{
+        }else{
             System.out.println(0);
         }
         
