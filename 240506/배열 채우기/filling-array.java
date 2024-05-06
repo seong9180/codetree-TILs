@@ -14,9 +14,9 @@ public class Main {
                 count = i;
                 break;
             }
-
+            count ++;
         }
-
+        
         for(int i = count - 1; i >= 0 ; i--){
             System.out.print(arr[i] + " ");
         }
