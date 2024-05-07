@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static int LCM(int n, int m){
-        int min = 100;
+        int min = 10000;
         for(int i = 1 ; i <= 100; i ++){
             if((n*i) % m == 0 && (n*i) <= min){
                 min = n*i;
