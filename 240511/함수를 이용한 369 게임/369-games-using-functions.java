@@ -8,15 +8,34 @@ public class Main {
         return (x % 10 == 3 || x % 10 == 6 || x % 10 == 9);
     }
 
-    public static boolean check_ten_369(int x){
-        return (x / 10 == 3 || x / 10 == 6 || x / 10 == 9);
+    public static boolean check_one_369(String xtext, int x){
+        int length = xtext.length();
+
+        for(int i = 1 ; i <= length; i++){
+            int formula = x % (10 * i);
+            return (formula == 3 || formula == 6 || formula == 9);
+        }
+
+        return false;
+    }
+
+    public static boolean check_ten_369(String xtext, int x){
+        int length = xtext.length();
+
+        for(int i = 1 ; i <= length; i++){
+            int formula = x / (10 * i);
+            return (formula == 3 || formula == 6 || formula == 9);
+        }
+
+        return false;
     }
 
     public static int count_369(int x, int y){
         int count = 0;
 
         for(int i = x; i <= y; i++){
-            if(check_one_369(i) || check_ten_369(i) || isThree(i)){
+            String iText = i + "";
+            if(check_one_369(iText,i) || check_ten_369(iText,i) || isThree(i)){
                 count ++;
             }
         }
