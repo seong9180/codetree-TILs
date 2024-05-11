@@ -68,13 +68,13 @@ public class Main {
                     System.out.println("Summer");
                 }
             } else if (m == 9) {
-                if(d > 31){
+                if(d > 30){
                     System.out.println(-1);
                 }else{
                     System.out.println("Fall");
                 }
             } else if (m == 10) {
-                if(d > 30){
+                if(d > 31){
                     System.out.println(-1);
                 }else{
                     System.out.println("Fall");
@@ -143,13 +143,13 @@ public class Main {
                     System.out.println("Summer");
                 }
             } else if (m == 9) {
-                if(d > 31){
+                if(d > 30){
                     System.out.println(-1);
                 }else{
                     System.out.println("Fall");
                 }
             } else if (m == 10) {
-                if(d > 30){
+                if(d > 31){
                     System.out.println(-1);
                 }else{
                     System.out.println("Fall");
