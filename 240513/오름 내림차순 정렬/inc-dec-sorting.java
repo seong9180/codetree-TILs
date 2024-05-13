@@ -28,7 +28,12 @@ public class Main {
         Arrays.sort(arr2, Collections.reverseOrder());
 
         for(int i = 0 ; i < n; i++){
-            System.out.print(arr2[i] + " ");
+            //System.out.print(arr2[i] + " ");
+        }
+
+        //Integer > reverse 사용 안 하고 출력해보기.
+        for(int i = n - 1; i >= 0; i--){
+            System.out.print(arr[i] + " ");
         }
     }
 }
