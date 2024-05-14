@@ -4,8 +4,13 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static boolean isSameString(String x, String y){
-        return (x.charAt(0) == y.charAt(0) && x.charAt(1) == y.charAt(1));
+    public static boolean isSameString(String x, String t){
+        for (int i = 0; i < t.length(); i++) {
+            if (x.charAt(i) != t.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -21,6 +26,7 @@ public class Main {
             input[i] = sc.next();
         }
 
+
         Arrays.sort(input);
         int count = 0;
 
@@ -31,6 +37,7 @@ public class Main {
 
             if (count == k) {
                 System.out.println(input[i]);
+                break;
             }
         }
 
