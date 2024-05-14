@@ -32,6 +32,9 @@ public class Main {
             for (int i = 0; i < word1.length(); i++) {
                 if (arr1[i] == arr2[i]) {
                     same = true;
+                }else{
+                    same = false;
+                    break;
                 }
             }
 
