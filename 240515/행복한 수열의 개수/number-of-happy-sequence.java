@@ -26,16 +26,15 @@ public class Main {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     boolean check = false;
-                    if (n == 1 && m == 1) {
-                        check = true;
-                        break;
-                    } else if (j + m > n) {
+                    //int inner_count = 0;
+                    if (j + m > n) {
                         i++;
                         break;
                     } else if (m > 1) {
                         for (int k = 1; k <= m; k++) {
-                            if (j + k < n && grid[i][j] == grid[i][j + k]) {
+                            if (j + k < n && grid[i][j + k - 1] == grid[i][j + k]) {
                                 check = true; //k (m) 범위 동안 모두 동일한 값을 가질 때만 true;
+                                //inner_count ++;
                                 //System.out.println("for 1 : true, i,j,k = " + i + " " + j + " " + k);
                             } else {
                                 check = false;
@@ -44,8 +43,9 @@ public class Main {
                         }
                     } else if (m == 1) {
                         for (int k = 1; k <= m; k++) {
-                            if (j + k < n && grid[i][j] != grid[i][j + k]) {
+                            if (j + k < n && grid[i][j + k - 1] != grid[i][j + k]) {
                                 check = true; //m == 1 일때 '행복함' 조건을 만족하는 조합이 하나라도 있다면 true 이후 break;
+                                //inner_count = m;
                                 //System.out.println("for 1 : true, i,j,k = " + i + " " + j + " " + k);
                                 break;
                             }
@@ -66,16 +66,15 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 for (int i = 0; i < n; i++) {
                     boolean check = false;
-                    if (n == 1 && m == 1) {
-                        check = true;
-                        break;
-                    } else if (i + m > n) {
+                    //int inner_count = 0;
+                    if (i + m > n) {
                         j++;
                         break;
                     } else if (m > 1) {
                         for (int k = 1; k <= m; k++) {
-                            if (i + k < n && grid[i][j] == grid[i + k][j]) {
+                            if (i + k < n && grid[i + k - 1][j] == grid[i + k][j]) {
                                 check = true;
+                                //inner_count ++;
                                 //System.out.println("for2 : true, i,j,k = " + i + " " + j + " " + k);
                             } else {
                                 check = false;
@@ -84,8 +83,9 @@ public class Main {
                         }
                     } else if (m == 1) {
                         for (int k = 1; k <= m; k++) {
-                            if (i + k < n && grid[i][j] != grid[i + k][j]) {
+                            if (i + k < n && grid[i + k - 1][j] != grid[i + k][j]) {
                                 check = true;
+                                //inner_count = m;
                                 //System.out.println("for2 : true, i,j,k = " + i + " " + j + " " + k);
                                 break;
                             }
