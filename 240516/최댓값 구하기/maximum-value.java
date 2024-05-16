@@ -8,7 +8,7 @@ public class Main {
         int b = sc.nextInt();
         int c = sc.nextInt();
 
-        int max = 0;
+        int max = -100;
 
         for(int i = 0; i < 3; i++){
             if(a >= max){
