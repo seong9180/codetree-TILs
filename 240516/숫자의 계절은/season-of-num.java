@@ -8,7 +8,7 @@ public class Main {
         }else if(6 <= n && n <= 8){
             System.out.println("Summer");
         }else if(9 <= n && n <= 11){
-            System.out.println("fall");
+            System.out.println("Fall");
         }else{
             System.out.println("Winter");
         }
