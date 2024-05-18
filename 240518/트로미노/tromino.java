@@ -8,7 +8,7 @@ public class Main {
     //북 동 남 서 순서
     public static int[] dx = {-1, 0, 1, 0};
     public static int[] dy = {0, 1, 0, -1};
-    public static int[] dir = {0, 1, 2, 3};
+    public static int[] dir = {0, 1, 2, 3, 0};
     public static int[][] grid = new int[MAX][MAX];
     public static boolean inRange(int x, int y) {
         return (0 <= x && x < n && 0 <= y && y < m);
@@ -17,8 +17,9 @@ public class Main {
         int blockA_sum = 0, maxCount = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                for (int k = 1; k < 4; k++) {
+                for (int k = 1; k <= 4; k++) {
                     //인접한 dir 끼리 묶어서 inRange 하기 위해 nx1,nx2 / ny1,ny2 선언
+
                     int nx1 = i + dx[dir[k-1]];
                     int nx2 = i + dx[dir[k]];
                     int ny1 = j + dy[dir[k-1]];
