@@ -1,73 +1,61 @@
 //package study.codetree.samsung.exhaustive_search;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
-
 public class Main {
+    public static int n, m;
     public static int MAX_N = 100;
-    public static int n;
-    public static int m;
     public static int[][] grid = new int[MAX_N][MAX_N];
-    public static int isHappySequence(int n, int m){
-        int happyCount = 0;
+    public static int[] seq = new int[MAX_N];
 
-        for (int i = 0; i < n; i++) { //가로 행
-            for (int j = 0; j < n - 1; j++) { // j + 1 이 n - 1 범위를 넘어가면 안 됨.
-                int sequenceCount = 1;
-                int maxCount = 0;
-                if (grid[i][j] == grid[i][j + 1] && sequenceCount >= maxCount) {
-                    sequenceCount += 1;
-                    maxCount = sequenceCount;
-                }else if(grid[i][j] != grid[i][j + 1]){
-                    sequenceCount -= 1;
-                    if (m == 1) {
-                        happyCount ++;
-                        break;
-                    }
-                }
-                if (m != 1 && maxCount >= m) {
-                    happyCount ++;
-                }
+    public static boolean isHappySequence() {
+        int maxcCount = 1;
+        for (int i = 0; i < n - 1; i++) {
+            int consecutiveCount = 1;
+
+            if (seq[i] == seq[i + 1]) {
+                consecutiveCount ++;
+            }else{
+                consecutiveCount = 1; //연속하지 않으면 - 가 아니고 1(초기상태) 로 돌아오게 하기
             }
-        }
 
-        for (int i = 0; i < n; i++) { //세로 행 : i , j 반전
-            for (int j = 0; j < n - 1; j++) { // j + 1 이 n - 1 범위를 넘어가면 안 됨.
-                int sequenceCount = 1;
-                int maxCount = 0;
-                if (grid[j][i] == grid[j][i + 1] && sequenceCount >= maxCount) {
-                    sequenceCount += 1;
-                    maxCount = sequenceCount;
-                }else if(grid[j][i] != grid[j][i + 1]){
-                    sequenceCount -= 1;
-                    if (m == 1) {
-                        happyCount ++;
-                        break;
-                    }
-                }
-                if (m != 1 && maxCount >= m) {
-                    happyCount ++;
-                }
-            }
+            maxcCount = Math.max(consecutiveCount, maxcCount); //최대값 편하게 사용법
         }
-
-        return happyCount;
+        return (maxcCount >= m);
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        long start = System.currentTimeMillis();
 
         n = sc.nextInt();
         m = sc.nextInt();
+        int numHappy = 0;
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                grid[i][j] = sc.nextInt();
+                grid[i][j] = sc.nextInt(); //주의해야 할 부분 !
             }
         }
 
-        System.out.println(isHappySequence(n, m));
-        long end = System.currentTimeMillis();
-        //System.out.println("수행시간: " + (end - start) + " ms");
+        //가로열 카운트
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                seq[j] = grid[i][j];
+            }
+            if (isHappySequence()) {
+                numHappy ++;
+            }
+        }
 
+        //세로열 카운트
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                seq[j] = grid[j][i]; //주의해야 할 부분 !
+            }
+            if (isHappySequence()) {
+                numHappy ++;
+            }
+        }
+
+        System.out.println(numHappy);
     }
 }
