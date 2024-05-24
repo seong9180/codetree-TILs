@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
    public static int n1, n2;
    public static final int MAX_N1 = 100, MAX_N2 = 100;
-   public static int[] arr1 = new int[MAX_N1 + 2];
-   public static int[] arr2 = new int[MAX_N2 + 2];
+   public static int[] arr1 = new int[MAX_N1 * 2];
+   public static int[] arr2 = new int[MAX_N2 * 2];
 
     public static boolean isConsecSubseq() {
         boolean check = false;
