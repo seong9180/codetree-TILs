@@ -7,7 +7,11 @@ public class Main {
 
     public static boolean isLeapYear(int x) {
         if (x % 4 == 0) {
-            return x % 100 != 0 && x % 400 == 0;
+            if (x % 100 == 0 && x % 400 != 0) {
+                return false;
+            }else{
+                return true;
+            }
         }
         return false;
     }
