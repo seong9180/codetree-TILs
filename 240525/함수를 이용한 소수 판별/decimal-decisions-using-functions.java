@@ -22,7 +22,10 @@ public class Main {
         int sum = 0;
 
         for (int i = a; i <= b; i++) {
-            if (isPrimeNumber(i)) {
+            if (a == b) { //a == b 인 경우, 그 어떤 수도 소수가 될 수 없음
+                sum = 0;
+                break;
+            } else if (isPrimeNumber(i)) {
                 sum += i;
             }
         }
