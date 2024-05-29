@@ -11,7 +11,7 @@ public class Main {
         char input = sc.next().charAt(0);
         boolean check = false;
 
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 6; i++){
             if(alphabet[i] == input){
                 System.out.print(i);
                 check = true;
