@@ -15,12 +15,13 @@ public class Main {
             if(alphabet[i] == input){
                 System.out.print(i);
                 check = true;
+                break;
             }else{
                 check = false;
                 continue;
             }
         }
-        
+
         if(!check){
             System.out.print("None");
         }
