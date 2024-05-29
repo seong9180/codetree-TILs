@@ -9,20 +9,20 @@ public class Main {
         char[] alphabet = {'L', 'E', 'B', 'R', 'O', 'S'};
 
         char input = sc.next().charAt(0);
+        boolean check = false;
 
         for(int i = 0; i < 5; i++){
-            boolean check = false;
             if(alphabet[i] == input){
                 System.out.print(i);
                 check = true;
             }else{
+                check = false;
                 continue;
             }
-            if(!check){
-                System.out.print("None");
-            }else{
-                break;
-            }
+        }
+        
+        if(!check){
+            System.out.print("None");
         }
     }
 }
