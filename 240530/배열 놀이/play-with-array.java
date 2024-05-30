@@ -14,7 +14,7 @@ public class Main {
     public static void query2(int b) {
         //2b 명령 수행
         int idx = -1;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < n; i++) {
             if (arr[i] == b && idx <= i + 1) { //index 중 가장 작은 값을 idx 에 저장
                 idx = i + 1;
             }
