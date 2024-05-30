@@ -7,7 +7,7 @@ public class Main {
 
         int n = sc.nextInt();
         int[] arr = new int[n];
-        int min = (int)Math.pow(2,31) - 1;
+        double min = Math.pow(2,31) - 1;
         for(int i = 0 ; i < n ; i++){
             arr[i] = sc.nextInt();
             if(arr[i] <= min){
