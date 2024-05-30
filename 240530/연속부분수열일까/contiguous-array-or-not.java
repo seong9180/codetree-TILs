@@ -10,6 +10,10 @@ public class Main {
 
     public static boolean isSequentSubString() {
         boolean check = false;
+        if (n2 > n1) { //b의 수열이 a의 수열보다 크기가 큰 경우는 비교하지 않고 false
+            return check;
+        }
+        
         for (int i = 0; i < n1; i++) {
             if (arr1[i] == arr2[0]) { //연속 부분수열 판별이기 떄문에 무조건 arr2의 시작은 0번째부터
                 for (int j = 0; j < n2; j++) {
