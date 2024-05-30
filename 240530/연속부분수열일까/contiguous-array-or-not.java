@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class Main {
     public static int n1, n2;
     public static final int MAX_N1 = 100, MAX_N2 = 100;
-    public static int[] arr1 = new int[MAX_N1];
-    public static int[] arr2 = new int[MAX_N2];
+    //n1, n2 가 동일한 100크기의 배열인 경우를 대비해 배열 최대값을 200으로 설정
+    public static int[] arr1 = new int[MAX_N1 + MAX_N2]; 
+    public static int[] arr2 = new int[MAX_N2 + MAX_N1];
 
     public static boolean isSequentSubString() {
         boolean check = false;
