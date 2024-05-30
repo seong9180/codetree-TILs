@@ -14,15 +14,19 @@ public class Main {
     public static void query2(int b) {
         //2b 명령 수행
         int idx = -1;
+        int min = 100;
         for (int i = 0; i < n; i++) {
-            if (arr[i] == b && idx <= i + 1) { //index 중 가장 작은 값을 idx 에 저장
+            if (arr[i] == b) { //index 중 가장 작은 값을 idx 에 저장
                 idx = i + 1;
+                if (idx <= min) {
+                    min = idx;
+                }
             }
         }
         if (idx == -1) { //b랑 같은 원소가 없을 경우
             System.out.println(0); //0을 출력
         }else{
-            System.out.println(idx);
+            System.out.println(min);
         }
     }
 
@@ -44,7 +48,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-
+        //System.out.println("------output------");
         //q 개의 질의를 처리
         for (int i = 0; i < q; i++) {
             int query = sc.nextInt();
