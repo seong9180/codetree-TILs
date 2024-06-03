@@ -8,11 +8,24 @@ public class Main {
         
         int count = 1;
         int digit_count = 2;
-        for(int i = 0 ; i < a.length(); i++){
+        boolean same = true;
+
+        for(int i = 0; i < a.length(); i++){
             if(i+1 < a.length() && a.charAt(i) != a.charAt(i+1)){
-                digit_count += 2;
+                same = false;
             }
         }
+
+        if(same){
+            digit_count = 2;
+        }else{
+            for(int i = 0 ; i < a.length(); i++){
+                if(i+1 < a.length() && a.charAt(i) != a.charAt(i+1)){
+                    digit_count += 2;
+                }
+            }
+        }
+
         System.out.println(digit_count);
 
         for(int i = 0; i < a.length(); i++){
