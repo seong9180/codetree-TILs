@@ -21,7 +21,7 @@ public class Main {
                 digit_count = 3;
             }else if(100 <= a.length() && a.length() < 1000){
                 digit_count = 4;
-            }else if(a.length() = 1000){
+            }else if(a.length() == 1000){
                 digit_count = 5;
             }else{
                 digit_count = 2;
