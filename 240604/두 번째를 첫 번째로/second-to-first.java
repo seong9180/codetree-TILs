@@ -9,7 +9,7 @@ public class Main {
         char alphaSecond = str.charAt(1); // 두 번째 문자
         char alphaFirst = str.charAt(0);; // 첫 번째 문자
         //문자를 배열에 저장 #방법 1
-        char[] charArray = str.toCharArray; //이렇게 문자열을 바로 배열에 넣을 수 있다. 기억해두기
+        char[] charArray = str.toCharArray(); //이렇게 문자열을 바로 배열에 넣을 수 있다. 기억해두기
         //StringBuilder 이용 #방법 2
         StringBuilder sb = new StringBuilder(str);
 
