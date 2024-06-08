@@ -6,27 +6,44 @@ public class Main {
         int N = scanner.nextInt();
         scanner.close();
         
+        // BFS를 위한 큐 생성
+        Queue<Integer> queue = new LinkedList<>();
         // 최소 연산 횟수를 저장할 배열 생성
         int[] dp = new int[N + 1];
         
-        // dp 배열을 초기화
+        // 배열 초기화
         Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[1] = 0; // 숫자 1을 1로 만드는 데 필요한 연산 횟수는 0
+        dp[N] = 0;
         
-        // 동적 프로그래밍을 통해 최소 연산 횟수를 계산
-        for (int i = 1; i < N; i++) {
-            if (i + 1 <= N) {
-                dp[i + 1] = Math.min(dp[i + 1], dp[i] + 1);
+        queue.add(N);
+        
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            
+            if (current == 1) {
+                System.out.println(dp[current]);
+                return;
             }
-            if (i * 2 <= N) {
-                dp[i * 2] = Math.min(dp[i * 2], dp[i] + 1);
+            
+            if (current - 1 > 0 && dp[current - 1] > dp[current] + 1) {
+                dp[current - 1] = dp[current] + 1;
+                queue.add(current - 1);
             }
-            if (i * 3 <= N) {
-                dp[i * 3] = Math.min(dp[i * 3], dp[i] + 1);
+            
+            if (current + 1 <= N && dp[current + 1] > dp[current] + 1) {
+                dp[current + 1] = dp[current] + 1;
+                queue.add(current + 1);
+            }
+            
+            if (current % 2 == 0 && dp[current / 2] > dp[current] + 1) {
+                dp[current / 2] = dp[current] + 1;
+                queue.add(current / 2);
+            }
+            
+            if (current % 3 == 0 && dp[current / 3] > dp[current] + 1) {
+                dp[current / 3] = dp[current] + 1;
+                queue.add(current / 3);
             }
         }
-        
-        // 결과 출력
-        System.out.println(dp[N]);
     }
 }
