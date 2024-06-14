@@ -17,7 +17,7 @@ public class Main {
 
         for (int i = 0; i < char_a.length; i++) {
             int asc_num = (int) char_a[i];
-            if (asc_num <= 48 || asc_num >= 57) { //숫자가 아니면,
+            if (asc_num < 48 || asc_num > 57) { //숫자가 아니면,
                 break;
             }else{
                 new_a += char_a[i];
@@ -26,7 +26,7 @@ public class Main {
 
         for (int i = 0; i < char_b.length; i++) {
             int asc_num = (int) char_b[i];
-            if (asc_num <= 48 || asc_num >= 57) { //숫자가 아니면,
+            if (asc_num < 48 || asc_num > 57) { //숫자가 아니면,
                 break;
             }else{
                 new_b += char_b[i];
