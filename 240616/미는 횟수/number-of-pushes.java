@@ -19,7 +19,7 @@ public class Main {
             n++;
         }
         
-        if(n > length){ // 불가능
+        if(n >= length){ // 불가능
             System.out.println(-1);
         }else{
             System.out.println(n);
