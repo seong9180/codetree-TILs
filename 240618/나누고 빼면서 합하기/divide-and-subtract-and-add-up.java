@@ -26,14 +26,14 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        int sum = 0;
+        int sum = arr[m - 1];
         while(true){
+            m = calculateM(m);
             if (m == 1) {
-                sum += arr[m];
+                sum += arr[m-1];
                 break;
             }else{
-                m = calculateM(m);
-                sum += arr[m];
+                sum += arr[m-1];
             }
         }
 
