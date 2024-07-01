@@ -38,12 +38,12 @@ public class Main {
         for (int i = 0; i < n; i++) {
             // 날짜의- 연도-월-일 부분을 정수형으로 변환.
             String strYear = weathers[i].day.substring(0, 4);
-            int intYear = Integer.parseInt(strYear); 
-            String strMonth = weathers[i].day.substring(6, 7);
+            int intYear = Integer.parseInt(strYear);
+            String strMonth = weathers[i].day.substring(5, 7);
             int intMonth = Integer.parseInt(strMonth);
-            String strDay = weathers[i].day.substring(9, 10);
+            String strDay = weathers[i].day.substring(8, 10);
             int intDay = Integer.parseInt(strDay);
-            
+
             if (weathers[i].weather.equals("Rain")) { // 비가 온다면
                 if (intYear == min_year) {
                     if (intMonth == min_month) {
