@@ -36,26 +36,31 @@ public class Main {
         int index = 0;
         // 비가 오는 날짜들 찾기
         for (int i = 0; i < n; i++) {
+            // 날짜의- 연도-월-일 부분을 정수형으로 변환.
+            String strYear = weathers[i].day.substring(0, 4);
+            int intYear = Integer.parseInt(strYear); 
+            String strMonth = weathers[i].day.substring(6, 7);
+            int intMonth = Integer.parseInt(strMonth);
+            String strDay = weathers[i].day.substring(9, 10);
+            int intDay = Integer.parseInt(strDay);
+            
             if (weathers[i].weather.equals("Rain")) { // 비가 온다면
-                String strYear = weathers[i].day.substring(0, 3);
-                int intYear = Integer.parseInt(strYear); // 날짜의- 연도 부분을 정수형으로 변환
                 if (intYear == min_year) {
-                    String strMonth = weathers[i].day.substring(6, 7);
-                    int intMonth = Integer.parseInt(strMonth);
                     if (intMonth == min_month) {
-                        String strDay = weathers[i].day.substring(9, 10);
-                        int intDay = Integer.parseInt(strDay);
                         if (intDay < min_day) {  // 년 ,월, 일 모두 동일한 값은 주어지지 않음.
                             min_day = intDay; //최소 일 갱신 (가장 가까운 일)
                             index = i; //가장 근시일 내의 날짜 인덱스
                         }
                     } else if (intMonth < min_month) { //같은 년도에 더 작은 월이 있다면 해당 인덱스를 찾고 i++ 루프
                         min_month = intMonth; //최소 월 갱신 (가장 가까운 월)
+                        min_day = intDay;
                         index = i;
                         continue;
                     }
                 } else if (intYear < min_year) { //더 작은 년도의 날짜가 있다면 해당 인덱스를 찾고 i++ 루프
                     min_year = intYear; //최소 년도 갱신 (가장 가까운 년도)
+                    min_month = intMonth;
+                    min_day = intDay;
                     index = i;
                     continue;
                 }
