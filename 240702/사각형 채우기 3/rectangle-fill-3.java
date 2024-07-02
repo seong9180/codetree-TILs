@@ -7,7 +7,7 @@ public class Main {
         if(n == 1){
             return 2;
         }else if(n == 2){
-            return 3;
+            return 7;
         }else if(n > 2 && n % 2 != 0){
             return (3 * 2) + (fillWithBlocks(n-1) - 3) * 4;
         }else{
