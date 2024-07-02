@@ -7,7 +7,7 @@ public class Main {
         if(n == 1){
             return 2;
         }else{
-            return 7 * n;
+            return 7 * (n - 1);
         }
     }
     public static void main(String[] args) {
