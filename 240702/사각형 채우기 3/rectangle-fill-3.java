@@ -6,8 +6,12 @@ public class Main {
     public static int fillWithBlocks(int n){
         if(n == 1){
             return 2;
+        }else if(n == 2){
+            return 3;
+        }else if(n > 2 && n % 2 != 0){
+            return (3 * 2) + (fillWithBlocks(n-1) - 3) * 4;
         }else{
-            return 3 * (fillWithBlocks(n-1)) + 1;
+            return (2 * 2) + (fillWithBlocks(n-1) - 2) * 4;
         }
     }
     public static void main(String[] args) {
