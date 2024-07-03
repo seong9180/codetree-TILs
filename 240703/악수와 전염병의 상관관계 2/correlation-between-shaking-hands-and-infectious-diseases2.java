@@ -28,11 +28,14 @@ public class Main {
             int x = handshake.x;
             int y = handshake.y;
             
-            if (infected[x] && infectionCount[x] < K) {
+            boolean xWasInfected = infected[x];
+            boolean yWasInfected = infected[y];
+            
+            if (xWasInfected && infectionCount[x] < K) {
                 infected[y] = true;
                 infectionCount[x]++;
             }
-            if (infected[y] && infectionCount[y] < K) {
+            if (yWasInfected && infectionCount[y] < K) {
                 infected[x] = true;
                 infectionCount[y]++;
             }
