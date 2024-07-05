@@ -25,6 +25,8 @@ public class Main {
             }else if(b == 11){
                 if(c < 11){
                     System.out.println(-1);
+                }else{
+                    System.out.println(0); //두 시점이 동일한 경우 0
                 }
             }
         }else{ //정상적인 케이스
