@@ -32,7 +32,7 @@ public class Main {
         if(gap == 0){ //같은 월일때
             exclusive_day = d2 - d1; 
         }else if(gap >= 2){ //사이에 한개 이상의 달이 껴 있는 경우
-            for(int i = 2; i < gap; i++){
+            for(int i = 2; i <= gap; i++){
                 exclusive_day += countMonth(m1 + i - 1);
             }
             //m1 월의 최대일 - d1
