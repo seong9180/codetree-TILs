@@ -32,7 +32,8 @@ public class Main {
             int originMaxMin = (11 * 60 * 24) + (11 * 60) + 11;
             int targetMaxMin = (a * 60 * 24) + (b * 60) + c;
 
-            System.out.println(targetMaxMin - originMaxMin);
+            int answer = targetMaxMin - originMaxMin;
+            System.out.println(answer);
         }
 
 
