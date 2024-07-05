@@ -23,7 +23,7 @@ public class Main {
         //(m1 월의 최대일 - d1) + 그 사이 월
         int exclusive_day = 1; //첫 날 포함해서 계산하기 때문에 0 > 1
         if(m1 == m2 && d1 == d2){ //동일한 날이 주어지면,
-            exclusive_day == 0;
+            exclusive_day = 0;
         }
         //1. m1 과 m2의 차이 구하기
         int gap = m2 - m1;
