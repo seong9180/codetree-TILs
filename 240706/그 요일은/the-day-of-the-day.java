@@ -82,7 +82,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         /*
         문제 로직
-        
+
         일수 차이 / 7 == x //"온전한 일주일" 이 반복된 횟수
         기준 요일 == 월요일
         목적 요일 == y
@@ -125,7 +125,7 @@ public class Main {
             if (indexOfB >= index) {
                 count ++;
             }
-        } else if (getDayOfWeek() == 0) { //일주일 이내 간격
+        } else if (getDayOfWeek2() == 0) { //일주일 이내 간격
             if (month.equals(dayBofWeek())) { //목적 요일이 월요일이라면,
                 count++;
             }
@@ -141,7 +141,9 @@ public class Main {
                 count ++;
             }
         }
-
+        //System.out.println("day gap = " + daysBetween());
+        //System.out.println("목적 요일 = " + month);
+        //System.out.println("day B 요일 = " + dayBofWeek());
         System.out.println(count);
     }
 }
