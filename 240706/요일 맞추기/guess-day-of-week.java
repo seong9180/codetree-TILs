@@ -65,15 +65,15 @@ public class Main {
             System.out.println("Mon");
         } else if (getDayOfWeek() == -1) {
             System.out.println("Tue");
-        } else if (getDayOfWeek() == -1) {
+        } else if (getDayOfWeek() == -2) {
             System.out.println("Wed");
-        } else if (getDayOfWeek() == -1) {
+        } else if (getDayOfWeek() == -3) {
             System.out.println("Thu");
-        } else if (getDayOfWeek() == -1) {
+        } else if (getDayOfWeek() == -4) {
             System.out.println("Fri");
-        } else if (getDayOfWeek() == -1) {
+        } else if (getDayOfWeek() == -5) {
             System.out.println("Sat");
-        } else if (getDayOfWeek() == -1) {
+        } else if (getDayOfWeek() == -6) {
             System.out.println("Sun");
         }
     }
