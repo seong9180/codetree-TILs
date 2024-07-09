@@ -33,7 +33,7 @@ public class Main {
         }
 
         for (int i = 0; i < n; i++) {
-            for (int j = segments[i].x - 1; j < segments[i].y - 1; j++) { //구간 카운트는 x1 ~ x2 -1
+            for (int j = segments[i].x ; j < segments[i].y - 1; j++) { //구간 카운트는 x1 ~ x2 -1
                 maxArea[j] ++;
             }
         }
