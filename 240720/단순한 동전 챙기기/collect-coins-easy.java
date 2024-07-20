@@ -36,7 +36,7 @@ public class Main {
         Collections.sort(coins, (a, b) -> a[2] - b[2]);
 
         int result = solve();
-        System.out.println(result);
+        System.out.println(result == INF ? -1 : result);
     }
 
     static int solve() {
@@ -55,24 +55,25 @@ public class Main {
             }
         }
 
-        return dfs(0, 0, 1 << (coins.size() + 1), dist);
+        return dfs(0, 0, 0, dist);
     }
 
-    static int dfs(int current, int collected, int visited, int[][] dist) {
+    static int dfs(int current, int collected, int lastCoin, int[][] dist) {
         if (collected >= 3 && current == coins.size() + 1) {
             return 0;
         }
         
         int result = INF;
         for (int next = 1; next <= coins.size() + 1; next++) {
-            if (next == current || (visited & (1 << next)) != 0) continue;
-            if (next < coins.size() + 1 && current > 0 && coins.get(next - 1)[2] < coins.get(current - 1)[2]) continue;
-            
-            int newCollected = collected + (next <= coins.size() ? 1 : 0);
-            int newVisited = visited | (1 << next);
-            int subResult = dfs(next, newCollected, newVisited, dist);
-            if (subResult != INF) {
-                result = Math.min(result, subResult + dist[current][next]);
+            if (next == current) continue;
+            if (next <= coins.size()) {
+                if (coins.get(next - 1)[2] <= lastCoin) continue;
+                int subResult = dfs(next, collected + 1, coins.get(next - 1)[2], dist);
+                if (subResult != INF) {
+                    result = Math.min(result, subResult + dist[current][next]);
+                }
+            } else if (collected >= 3) {
+                result = Math.min(result, dist[current][next]);
             }
         }
         return result;
