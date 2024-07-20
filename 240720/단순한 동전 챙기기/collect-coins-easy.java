@@ -5,8 +5,7 @@ public class Main {
     static char[][] grid;
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
-    static int[][] coins;
-    static int coinCount;
+    static List<int[]> coins;
     static int startX, startY, endX, endY;
     static final int INF = 1000000000;
 
@@ -16,8 +15,7 @@ public class Main {
         sc.nextLine();
         
         grid = new char[N][N];
-        coins = new int[10][2];
-        coinCount = 0;
+        coins = new ArrayList<>();
 
         for (int i = 0; i < N; i++) {
             String line = sc.nextLine();
@@ -30,33 +28,54 @@ public class Main {
                     endX = i;
                     endY = j;
                 } else if (Character.isDigit(grid[i][j])) {
-                    coins[grid[i][j] - '0'][0] = i;
-                    coins[grid[i][j] - '0'][1] = j;
-                    coinCount++;
+                    coins.add(new int[]{i, j, grid[i][j] - '0'});
                 }
             }
         }
+
+        Collections.sort(coins, (a, b) -> a[2] - b[2]);
 
         int result = solve();
         System.out.println(result);
     }
 
     static int solve() {
-        int minMoves = INF;
-        for (int i = 1; i <= coinCount - 2; i++) {
-            for (int j = i + 1; j <= coinCount - 1; j++) {
-                for (int k = j + 1; k <= coinCount; k++) {
-                    int moves = bfs(startX, startY, coins[i][0], coins[i][1]);
-                    moves += bfs(coins[i][0], coins[i][1], coins[j][0], coins[j][1]);
-                    moves += bfs(coins[j][0], coins[j][1], coins[k][0], coins[k][1]);
-                    moves += bfs(coins[k][0], coins[k][1], endX, endY);
-                    if (moves < minMoves) {
-                        minMoves = moves;
-                    }
-                }
+        int[][] dist = new int[coins.size() + 2][coins.size() + 2];
+        for (int i = 0; i < dist.length; i++) {
+            Arrays.fill(dist[i], INF);
+        }
+
+        // Calculate distances between all points
+        dist[0][coins.size() + 1] = bfs(startX, startY, endX, endY);
+        for (int i = 0; i < coins.size(); i++) {
+            dist[0][i + 1] = bfs(startX, startY, coins.get(i)[0], coins.get(i)[1]);
+            dist[i + 1][coins.size() + 1] = bfs(coins.get(i)[0], coins.get(i)[1], endX, endY);
+            for (int j = i + 1; j < coins.size(); j++) {
+                dist[i + 1][j + 1] = dist[j + 1][i + 1] = bfs(coins.get(i)[0], coins.get(i)[1], coins.get(j)[0], coins.get(j)[1]);
             }
         }
-        return minMoves == INF ? -1 : minMoves;
+
+        return dfs(0, 0, 1 << (coins.size() + 1), dist);
+    }
+
+    static int dfs(int current, int collected, int visited, int[][] dist) {
+        if (collected >= 3 && current == coins.size() + 1) {
+            return 0;
+        }
+        
+        int result = INF;
+        for (int next = 1; next <= coins.size() + 1; next++) {
+            if (next == current || (visited & (1 << next)) != 0) continue;
+            if (next < coins.size() + 1 && current > 0 && coins.get(next - 1)[2] < coins.get(current - 1)[2]) continue;
+            
+            int newCollected = collected + (next <= coins.size() ? 1 : 0);
+            int newVisited = visited | (1 << next);
+            int subResult = dfs(next, newCollected, newVisited, dist);
+            if (subResult != INF) {
+                result = Math.min(result, subResult + dist[current][next]);
+            }
+        }
+        return result;
     }
 
     static int bfs(int startX, int startY, int endX, int endY) {
