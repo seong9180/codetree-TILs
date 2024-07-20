@@ -37,6 +37,11 @@ public class Main {
             }
         }
         
+        if (coinList.size() < 3) {
+            System.out.println(-1);
+            return;
+        }
+        
         Collections.sort(coinList, (a, b) -> Integer.bitCount(b.coins) - Integer.bitCount(a.coins));
         
         int result = bfs();
