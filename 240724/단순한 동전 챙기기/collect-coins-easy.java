@@ -76,6 +76,12 @@ public class Main {
                         visited[nx][ny][newCoinsCollected][newLastCoin] = true;
                         queue.offer(new State(nx, ny, state.dist + 1, newCoinsCollected, newLastCoin));
                     }
+
+                    // 상태를 방문하지 않는 경우도 큐에 추가
+                    if (!visited[nx][ny][state.coinsCollected][state.lastCoin]) {
+                        visited[nx][ny][state.coinsCollected][state.lastCoin] = true;
+                        queue.offer(new State(nx, ny, state.dist + 1, state.coinsCollected, state.lastCoin));
+                    }
                 }
             }
         }
