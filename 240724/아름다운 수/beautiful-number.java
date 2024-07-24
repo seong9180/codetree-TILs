@@ -12,14 +12,16 @@ public class Main {
     }
 
     private static int generateBeautifulNumbers(String prefix, int n) {
-        if (n == 0) {
+        if (prefix.length() == n) {
             return isBeautifulNumber(prefix) ? 1 : 0;
         }
 
         int count = 0;
         for (int i = 1; i <= 4; i++) {
-            String newPrefix = prefix + i;
-            count += generateBeautifulNumbers(newPrefix, n - 1);
+            String newPrefix = prefix + String.valueOf(i).repeat(i);
+            if (newPrefix.length() <= n) {
+                count += generateBeautifulNumbers(newPrefix, n);
+            }
         }
         return count;
     }
