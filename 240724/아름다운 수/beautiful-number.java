@@ -26,15 +26,17 @@ public class Main {
 
     private static boolean isBeautifulNumber(String s) {
         int length = s.length();
-        for (int i = 0; i < length;) {
-            int count = 1;
-            while (i + count < length && s.charAt(i) == s.charAt(i + count)) {
+        int i = 0;
+        while (i < length) {
+            int num = s.charAt(i) - '0';
+            int count = 0;
+            while (i < length && s.charAt(i) - '0' == num) {
+                i++;
                 count++;
             }
-            if (count != Character.getNumericValue(s.charAt(i))) {
+            if (count != num) {
                 return false;
             }
-            i += count;
         }
         return true;
     }
