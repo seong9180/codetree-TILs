@@ -8,22 +8,31 @@ public class Main {
     }
 
     private static int countBeautifulNumbers(int n) {
-        return generateBeautifulNumbers("", n);
+        return generateBeautifulNumbers("", n, 1);
     }
 
-    private static int generateBeautifulNumbers(String prefix, int n) {
-        if (prefix.length() == n) {
+    private static int generateBeautifulNumbers(String prefix, int n, int currentLength) {
+        if (currentLength > n) {
+            return 0;
+        }
+        if (currentLength == n) {
             return isBeautifulNumber(prefix) ? 1 : 0;
         }
 
         int count = 0;
         for (int i = 1; i <= 4; i++) {
-            String newPrefix = prefix + String.valueOf(i).repeat(i);
-            if (newPrefix.length() <= n) {
-                count += generateBeautifulNumbers(newPrefix, n);
-            }
+            String repeated = repeat(i, i);
+            count += generateBeautifulNumbers(prefix + repeated, n, currentLength + i);
         }
         return count;
+    }
+
+    private static String repeat(int num, int times) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < times; i++) {
+            sb.append(num);
+        }
+        return sb.toString();
     }
 
     private static boolean isBeautifulNumber(String s) {
