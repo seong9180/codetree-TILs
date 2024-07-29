@@ -2,62 +2,46 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static class Point implements Comparable<Point> {
-        int x, y;
-        Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-        
-        @Override
-        public int compareTo(Point other) {
-            return this.x - other.x;
-        }
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         
-        Point[] points = new Point[N];
+        int[][] points = new int[N][2];
+        Set<Integer> xSet = new HashSet<>();
+        Set<Integer> ySet = new HashSet<>();
+        
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
-            points[i] = new Point(x, y);
+            points[i] = new int[]{x, y};
+            xSet.add(x);
+            ySet.add(y);
         }
         
-        Arrays.sort(points);
+        List<Integer> xList = new ArrayList<>(xSet);
+        List<Integer> yList = new ArrayList<>(ySet);
+        Collections.sort(xList);
+        Collections.sort(yList);
         
         int result = N;
-        for (int i = 0; i < N; i++) {
-            List<Integer> yCoords = new ArrayList<>();
-            for (int j = 0; j < N; j++) {
-                if (points[j].x > points[i].x) {
-                    yCoords.add(points[j].y);
-                }
-            }
-            Collections.sort(yCoords);
-            
-            int leftCount = i + 1;
-            int rightCount = N - leftCount;
-            
-            for (int j = 0; j < yCoords.size(); j++) {
-                int upperRight = rightCount - j - 1;
-                int lowerRight = j + 1;
+        
+        for (int i = 0; i < xList.size(); i++) {
+            for (int j = 0; j < yList.size(); j++) {
+                int a = (xList.get(i) + 1) / 2 * 2;
+                int b = (yList.get(j) + 1) / 2 * 2;
                 
-                int upperLeft = 0;
-                int lowerLeft = leftCount;
+                int q1 = 0, q2 = 0, q3 = 0, q4 = 0;
                 
-                for (int k = 0; k < i + 1; k++) {
-                    if (points[k].y > yCoords.get(j)) {
-                        upperLeft++;
-                        lowerLeft--;
-                    }
+                for (int[] point : points) {
+                    if (point[0] < a && point[1] > b) q1++;
+                    else if (point[0] > a && point[1] > b) q2++;
+                    else if (point[0] < a && point[1] < b) q3++;
+                    else if (point[0] > a && point[1] < b) q4++;
                 }
                 
-                int maxCount = Math.max(Math.max(upperLeft, upperRight), Math.max(lowerLeft, lowerRight));
-                result = Math.min(result, maxCount);
+                int maxPoints = Math.max(Math.max(q1, q2), Math.max(q3, q4));
+                result = Math.min(result, maxPoints);
             }
         }
         
