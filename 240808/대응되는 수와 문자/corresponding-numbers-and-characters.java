@@ -1,43 +1,47 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        // 입력 받기
-        String[] input = br.readLine().split(" ");
-        int n = Integer.parseInt(input[0]);
-        int m = Integer.parseInt(input[1]);
-
-        // 문자열과 숫자의 대응 관계 저장
-        String[] stringToNumber = new String[n + 1];
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        sc.nextLine(); // 개행 문자 처리
+        
+        // 두 개의 HashMap 생성
+        HashMap<Integer, String> numToStrMap = new HashMap<>();
+        HashMap<String, Integer> strToNumMap = new HashMap<>();
+        
+        // n개의 문자열을 입력받아 HashMap에 저장
         for (int i = 1; i <= n; i++) {
-            stringToNumber[i] = br.readLine();
+            String str = sc.nextLine();
+            numToStrMap.put(i, str);
+            strToNumMap.put(str, i);
         }
-
-        // 조사할 문자열 또는 숫자에 대한 결과 출력
+        
+        // m개의 조사할 값을 입력받아 대응되는 값을 출력
         for (int i = 0; i < m; i++) {
-            String query = br.readLine();
-            if (Character.isDigit(query.charAt(0))) {
-                int number = Integer.parseInt(query);
-                bw.write(stringToNumber[number] + "\n");
+            String query = sc.nextLine();
+            
+            // 입력이 숫자인지 문자열인지 판단
+            if (isNumeric(query)) {
+                int num = Integer.parseInt(query);
+                System.out.println(numToStrMap.get(num));
             } else {
-                for (int j = 1; j <= n; j++) {
-                    if (stringToNumber[j].equals(query)) {
-                        bw.write(String.valueOf(j) + "\n");
-                        break;
-                    }
-                }
+                System.out.println(strToNumMap.get(query));
             }
         }
-
-        bw.flush();
-        bw.close();
-        br.close();
+        
+        sc.close();
+    }
+    
+    // 입력된 문자열이 숫자인지 확인하는 메소드
+    public static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
