@@ -21,14 +21,14 @@ public class Main {
 
     public static int countPairs(int[] numbers, int k) {
         int count = 0;
-        HashMap<Integer, Integer> numToIndex = new HashMap<>();
+        HashMap<Integer, Integer> frequencyMap = new HashMap<>();
 
-        for (int i = 0; i < numbers.length; i++) {
-            int complement = k - numbers[i];
-            if (numToIndex.containsKey(complement)) {
-                count++;
+        for (int number : numbers) {
+            int complement = k - number;
+            if (frequencyMap.containsKey(complement)) {
+                count += frequencyMap.get(complement);
             }
-            numToIndex.put(numbers[i], i);
+            frequencyMap.put(number, frequencyMap.getOrDefault(number, 0) + 1);
         }
 
         return count;
