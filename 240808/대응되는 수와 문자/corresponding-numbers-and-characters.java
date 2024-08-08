@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -11,10 +10,9 @@ public class Main {
         int m = Integer.parseInt(input[1]);
 
         // 문자열과 숫자의 대응 관계 저장
-        HashMap<String, Integer> stringToNumber = new HashMap<>();
+        String[] stringToNumber = new String[n + 1];
         for (int i = 1; i <= n; i++) {
-            String str = scanner.nextLine();
-            stringToNumber.put(str, i);
+            stringToNumber[i] = scanner.nextLine();
         }
 
         // 조사할 문자열 또는 숫자에 대한 결과 출력
@@ -22,15 +20,13 @@ public class Main {
             String query = scanner.nextLine();
             if (Character.isDigit(query.charAt(0))) {
                 int number = Integer.parseInt(query);
-                for (String key : stringToNumber.keySet()) {
-                    if (stringToNumber.get(key) == number) {
-                        System.out.println(key);
+                System.out.println(stringToNumber[number]);
+            } else {
+                for (int j = 1; j <= n; j++) {
+                    if (stringToNumber[j].equals(query)) {
+                        System.out.println(j);
                         break;
                     }
-                }
-            } else {
-                if (stringToNumber.containsKey(query)) {
-                    System.out.println(stringToNumber.get(query));
                 }
             }
         }
