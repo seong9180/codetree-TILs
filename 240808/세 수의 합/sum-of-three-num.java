@@ -21,16 +21,16 @@ public class Main {
 
     public static int countTriplets(int[] numbers, int k) {
         int count = 0;
-        HashMap<Integer, Integer> numToIndex = new HashMap<>();
+        HashMap<Integer, Integer> frequencyMap = new HashMap<>();
 
         for (int i = 0; i < numbers.length; i++) {
             for (int j = i + 1; j < numbers.length; j++) {
                 int complement = k - numbers[i] - numbers[j];
-                if (numToIndex.containsKey(complement) && numToIndex.get(complement) < i && numToIndex.get(complement) < j) {
-                    count++;
+                if (frequencyMap.containsKey(complement)) {
+                    count += frequencyMap.get(complement);
                 }
             }
-            numToIndex.put(numbers[i], i);
+            frequencyMap.put(numbers[i], frequencyMap.getOrDefault(numbers[i], 0) + 1);
         }
 
         return count;
