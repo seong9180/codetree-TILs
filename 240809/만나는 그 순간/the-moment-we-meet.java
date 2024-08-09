@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -7,8 +9,8 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
         
-        int[] aPositions = new int[100001]; // 최대 이동 거리 추정 (100,000)
-        int[] bPositions = new int[100001];
+        Map<Integer, Integer> aPositions = new HashMap<>();
+        Map<Integer, Integer> bPositions = new HashMap<>();
         
         int aCurrentPosition = 0;
         int bCurrentPosition = 0;
@@ -23,7 +25,7 @@ public class Main {
             for (int t = 0; t < time; t++) {
                 aCurrentPosition += move;
                 currentTime++;
-                aPositions[currentTime] = aCurrentPosition;
+                aPositions.put(currentTime, aCurrentPosition);
             }
         }
         
@@ -38,14 +40,17 @@ public class Main {
             for (int t = 0; t < time; t++) {
                 bCurrentPosition += move;
                 currentTime++;
-                bPositions[currentTime] = bCurrentPosition;
+                bPositions.put(currentTime, bCurrentPosition);
             }
         }
         
         // 최초로 만나는 시간 찾기
         int meetingTime = -1;
         for (int t = 1; t <= currentTime; t++) {
-            if (aPositions[t] == bPositions[t]) {
+            int aPos = aPositions.getOrDefault(t, 0);
+            int bPos = bPositions.getOrDefault(t, 0);
+            
+            if (aPos == bPos) {
                 meetingTime = t;
                 break;
             }
