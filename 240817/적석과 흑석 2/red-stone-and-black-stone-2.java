@@ -22,7 +22,7 @@ public class Main {
         }
         
         Arrays.sort(redStones);
-        Arrays.sort(blackStones, (a, b) -> Integer.compare(a[1], b[1]));
+        Arrays.sort(blackStones, (a, b) -> Integer.compare(a[0], b[0]));
         
         int count = 0;
         int blackIndex = 0;
@@ -31,9 +31,10 @@ public class Main {
             while (blackIndex < N && blackStones[blackIndex][1] < redT) {
                 blackIndex++;
             }
-            if (blackIndex < N && blackStones[blackIndex][0] <= redT && redT <= blackStones[blackIndex][1]) {
+            while (blackIndex < N && blackStones[blackIndex][0] <= redT && redT <= blackStones[blackIndex][1]) {
                 count++;
                 blackIndex++;
+                break;
             }
         }
         
