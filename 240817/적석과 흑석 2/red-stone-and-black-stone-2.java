@@ -2,42 +2,66 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
+    static int C, N;
+    static int[] redStones;
+    static int[][] blackStones;
+    static ArrayList<Integer>[] graph;
+    static int[] matched;
+    static boolean[] visited;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         
-        int C = Integer.parseInt(st.nextToken());
-        int N = Integer.parseInt(st.nextToken());
+        C = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
         
-        int[] redStones = new int[C];
+        redStones = new int[C];
         for (int i = 0; i < C; i++) {
             redStones[i] = Integer.parseInt(br.readLine());
         }
         
-        int[][] blackStones = new int[N][2];
+        blackStones = new int[N][2];
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             blackStones[i][0] = Integer.parseInt(st.nextToken());
             blackStones[i][1] = Integer.parseInt(st.nextToken());
         }
         
-        Arrays.sort(redStones);
-        Arrays.sort(blackStones, (a, b) -> Integer.compare(a[0], b[0]));
+        graph = new ArrayList[C];
+        for (int i = 0; i < C; i++) {
+            graph[i] = new ArrayList<>();
+        }
         
-        int count = 0;
-        int blackIndex = 0;
-        
-        for (int redT : redStones) {
-            while (blackIndex < N && blackStones[blackIndex][1] < redT) {
-                blackIndex++;
-            }
-            while (blackIndex < N && blackStones[blackIndex][0] <= redT && redT <= blackStones[blackIndex][1]) {
-                count++;
-                blackIndex++;
-                break;
+        for (int i = 0; i < C; i++) {
+            for (int j = 0; j < N; j++) {
+                if (blackStones[j][0] <= redStones[i] && redStones[i] <= blackStones[j][1]) {
+                    graph[i].add(j);
+                }
             }
         }
         
+        matched = new int[N];
+        Arrays.fill(matched, -1);
+        
+        int count = 0;
+        for (int i = 0; i < C; i++) {
+            visited = new boolean[N];
+            if (dfs(i)) count++;
+        }
+        
         System.out.println(count);
+    }
+    
+    static boolean dfs(int red) {
+        for (int black : graph[red]) {
+            if (visited[black]) continue;
+            visited[black] = true;
+            if (matched[black] == -1 || dfs(matched[black])) {
+                matched[black] = red;
+                return true;
+            }
+        }
+        return false;
     }
 }
