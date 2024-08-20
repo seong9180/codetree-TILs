@@ -55,9 +55,12 @@ public class Main {
 
     static double dijkstra(List<List<Edge>> graph, int N, int X) {
         PriorityQueue<State> pq = new PriorityQueue<>();
-        pq.offer(new State(1, 0, Integer.MAX_VALUE, 0));
+        pq.offer(new State(1, 0, 1000000, 0));
 
         boolean[] visited = new boolean[N + 1];
+        double[] minTime = new double[N + 1];
+        Arrays.fill(minTime, Double.POSITIVE_INFINITY);
+        minTime[1] = 0;
 
         while (!pq.isEmpty()) {
             State current = pq.poll();
@@ -73,10 +76,12 @@ public class Main {
             visited[current.node] = true;
 
             for (Edge edge : graph.get(current.node)) {
-                if (!visited[edge.to]) {
-                    long newTotalL = current.totalL + edge.l;
-                    int newMinC = Math.min(current.minC, edge.c);
-                    double newTime = newTotalL + (double) X / newMinC;
+                long newTotalL = current.totalL + edge.l;
+                int newMinC = Math.min(current.minC, edge.c);
+                double newTime = newTotalL + (double) X / newMinC;
+
+                if (newTime < minTime[edge.to]) {
+                    minTime[edge.to] = newTime;
                     pq.offer(new State(edge.to, newTotalL, newMinC, newTime));
                 }
             }
