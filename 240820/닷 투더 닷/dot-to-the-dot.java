@@ -61,7 +61,7 @@ public class Main {
         for (int i = 0; i <= N; i++) {
             Arrays.fill(minTime[i], Double.POSITIVE_INFINITY);
         }
-        minTime[1][Integer.MAX_VALUE] = 0;
+        minTime[1][1000000] = 0;  // Use 1000000 as the initial minC
 
         while (!pq.isEmpty()) {
             State current = pq.poll();
@@ -70,7 +70,7 @@ public class Main {
                 return current.time;
             }
 
-            if (current.time > minTime[current.node][current.minC]) {
+            if (current.time > minTime[current.node][Math.min(current.minC, 1000000)]) {
                 continue;
             }
 
@@ -79,8 +79,8 @@ public class Main {
                 int newMinC = Math.min(current.minC, edge.c);
                 double newTime = newTotalL + (double) X / newMinC;
 
-                if (newTime < minTime[edge.to][newMinC]) {
-                    minTime[edge.to][newMinC] = newTime;
+                if (newTime < minTime[edge.to][Math.min(newMinC, 1000000)]) {
+                    minTime[edge.to][Math.min(newMinC, 1000000)] = newTime;
                     pq.offer(new State(edge.to, newTotalL, newMinC, newTime));
                 }
             }
