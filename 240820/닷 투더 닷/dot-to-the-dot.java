@@ -13,11 +13,13 @@ public class Main {
     static class State implements Comparable<State> {
         int node;
         long totalL;
+        int minC;
         double time;
 
-        State(int node, long totalL, double time) {
+        State(int node, long totalL, int minC, double time) {
             this.node = node;
             this.totalL = totalL;
+            this.minC = minC;
             this.time = time;
         }
 
@@ -53,11 +55,13 @@ public class Main {
 
     static double dijkstra(List<List<Edge>> graph, int N, int X) {
         PriorityQueue<State> pq = new PriorityQueue<>();
-        pq.offer(new State(1, 0, 0));
+        pq.offer(new State(1, 0, Integer.MAX_VALUE, 0));
 
-        double[] minTime = new double[N + 1];
-        Arrays.fill(minTime, Double.POSITIVE_INFINITY);
-        minTime[1] = 0;
+        double[][] minTime = new double[N + 1][1000001];  // minTime[node][minC]
+        for (int i = 0; i <= N; i++) {
+            Arrays.fill(minTime[i], Double.POSITIVE_INFINITY);
+        }
+        minTime[1][Integer.MAX_VALUE] = 0;
 
         while (!pq.isEmpty()) {
             State current = pq.poll();
@@ -66,17 +70,18 @@ public class Main {
                 return current.time;
             }
 
-            if (current.time > minTime[current.node]) {
+            if (current.time > minTime[current.node][current.minC]) {
                 continue;
             }
 
             for (Edge edge : graph.get(current.node)) {
                 long newTotalL = current.totalL + edge.l;
-                double newTime = newTotalL + (double) X / edge.c;
+                int newMinC = Math.min(current.minC, edge.c);
+                double newTime = newTotalL + (double) X / newMinC;
 
-                if (newTime < minTime[edge.to]) {
-                    minTime[edge.to] = newTime;
-                    pq.offer(new State(edge.to, newTotalL, newTime));
+                if (newTime < minTime[edge.to][newMinC]) {
+                    minTime[edge.to][newMinC] = newTime;
+                    pq.offer(new State(edge.to, newTotalL, newMinC, newTime));
                 }
             }
         }
