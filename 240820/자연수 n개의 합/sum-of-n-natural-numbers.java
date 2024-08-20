@@ -6,7 +6,7 @@ public class Main {
         long s = sc.nextLong();
 
         long left = 1;
-        long right = s;
+        long right = (long) Math.sqrt(2 * s) + 1;  // 가능한 최대 n 값의 초기 추정치 설정
         long answer = 0;
 
         while (left <= right) {
