@@ -57,11 +57,7 @@ public class Main {
         PriorityQueue<State> pq = new PriorityQueue<>();
         pq.offer(new State(1, 0, Integer.MAX_VALUE, 0));
 
-        double[][] minTime = new double[N + 1][1000001];  // minTime[node][minC]
-        for (int i = 0; i <= N; i++) {
-            Arrays.fill(minTime[i], Double.POSITIVE_INFINITY);
-        }
-        minTime[1][1000000] = 0;  // Use 1000000 as the initial minC
+        boolean[] visited = new boolean[N + 1];
 
         while (!pq.isEmpty()) {
             State current = pq.poll();
@@ -70,17 +66,17 @@ public class Main {
                 return current.time;
             }
 
-            if (current.time > minTime[current.node][Math.min(current.minC, 1000000)]) {
+            if (visited[current.node]) {
                 continue;
             }
 
-            for (Edge edge : graph.get(current.node)) {
-                long newTotalL = current.totalL + edge.l;
-                int newMinC = Math.min(current.minC, edge.c);
-                double newTime = newTotalL + (double) X / newMinC;
+            visited[current.node] = true;
 
-                if (newTime < minTime[edge.to][Math.min(newMinC, 1000000)]) {
-                    minTime[edge.to][Math.min(newMinC, 1000000)] = newTime;
+            for (Edge edge : graph.get(current.node)) {
+                if (!visited[edge.to]) {
+                    long newTotalL = current.totalL + edge.l;
+                    int newMinC = Math.min(current.minC, edge.c);
+                    double newTime = newTotalL + (double) X / newMinC;
                     pq.offer(new State(edge.to, newTotalL, newMinC, newTime));
                 }
             }
