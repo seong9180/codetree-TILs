@@ -13,13 +13,11 @@ public class Main {
     static class State implements Comparable<State> {
         int node;
         long totalL;
-        int minC;
         double time;
 
-        State(int node, long totalL, int minC, double time) {
+        State(int node, long totalL, double time) {
             this.node = node;
             this.totalL = totalL;
-            this.minC = minC;
             this.time = time;
         }
 
@@ -55,7 +53,7 @@ public class Main {
 
     static double dijkstra(List<List<Edge>> graph, int N, int X) {
         PriorityQueue<State> pq = new PriorityQueue<>();
-        pq.offer(new State(1, 0, Integer.MAX_VALUE, 0));
+        pq.offer(new State(1, 0, 0));
 
         double[] minTime = new double[N + 1];
         Arrays.fill(minTime, Double.POSITIVE_INFINITY);
@@ -74,12 +72,11 @@ public class Main {
 
             for (Edge edge : graph.get(current.node)) {
                 long newTotalL = current.totalL + edge.l;
-                int newMinC = Math.min(current.minC, edge.c);
-                double newTime = newTotalL + (double) X / newMinC;
+                double newTime = newTotalL + (double) X / edge.c;
 
                 if (newTime < minTime[edge.to]) {
                     minTime[edge.to] = newTime;
-                    pq.offer(new State(edge.to, newTotalL, newMinC, newTime));
+                    pq.offer(new State(edge.to, newTotalL, newTime));
                 }
             }
         }
