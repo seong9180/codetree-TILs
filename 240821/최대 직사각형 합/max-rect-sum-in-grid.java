@@ -13,27 +13,30 @@ public class Main {
             }
         }
 
-        // 누적 합 배열 계산
-        int[][] prefixSum = new int[n + 1][n + 1];
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) {
-                prefixSum[i][j] = grid[i - 1][j - 1] + prefixSum[i - 1][j] + prefixSum[i][j - 1] - prefixSum[i - 1][j - 1];
-            }
-        }
-
-        // 최대 합 계산
+        // Kadane's Algorithm을 이용한 최대 합 계산
         int maxSum = Integer.MIN_VALUE;
-        for (int x1 = 0; x1 < n; x1++) {
-            for (int y1 = 0; y1 < n; y1++) {
-                for (int x2 = x1; x2 < n; x2++) {
-                    for (int y2 = y1; y2 < n; y2++) {
-                        int sum = prefixSum[x2 + 1][y2 + 1] - prefixSum[x2 + 1][y1] - prefixSum[x1][y2 + 1] + prefixSum[x1][y1];
-                        maxSum = Math.max(maxSum, sum);
-                    }
+        for (int i = 0; i < n; i++) {
+            int[] kadaneSum = new int[n];
+            for (int j = i; j < n; j++) {
+                for (int k = 0; k < n; k++) {
+                    kadaneSum[k] += grid[j][k];
                 }
+                maxSum = Math.max(maxSum, kadaneMaxSum(kadaneSum));
             }
         }
 
         System.out.println(maxSum);
+    }
+
+    private static int kadaneMaxSum(int[] arr) {
+        int maxSum = arr[0];
+        int currentSum = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            currentSum = Math.max(arr[i], currentSum + arr[i]);
+            maxSum = Math.max(maxSum, currentSum);
+        }
+
+        return maxSum;
     }
 }
