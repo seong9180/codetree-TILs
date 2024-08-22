@@ -75,9 +75,11 @@ public class Main {
         }
 
         if (cornerCount == 2) { //한쪽 변이 통째로 b 안에 포함되는 모양 >> 전체 배열에서 2로 변한 부분을 제외한 1의 갯수 : 잔해물의 넓이
-            answer = aAfterB;
+            answer = aAfterB; //b 도형이 그려지고 난 a
         } else if (cornerCount == 3) { //ㄴ 혹은 ㄱ 등 한 변의 일부가 겹친 도형 모양 >> 원래 a 크기 : 잔해물의 넓이
-            answer = aCount;
+            answer = aCount; //b 도형이 그려지기 전 a
+        } else if (cornerCount == 4) { // a 와 b 가 아예 겹치지 않는 경우
+            answer = aCount; //b 도형이 그려지기 전 a
         } else {
             System.out.print("error! cornercount : ");
             answer = cornerCount;
