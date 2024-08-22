@@ -80,6 +80,8 @@ public class Main {
             answer = aCount; //b 도형이 그려지기 전 a
         } else if (cornerCount == 4) { // a 와 b 가 아예 겹치지 않는 경우
             answer = aCount; //b 도형이 그려지기 전 a
+        } else if (cornerCount == 0) { // a 도형이 b 도형 안에 완전히 포함된 경우
+            answer = 0;
         } else {
             System.out.print("error! cornercount : ");
             answer = cornerCount;
