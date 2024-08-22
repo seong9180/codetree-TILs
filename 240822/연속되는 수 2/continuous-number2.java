@@ -12,11 +12,11 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        int cnt = 1;
+        int cnt = 0;
         int maxCnt = 0;
         for (int i = 0; i < n; i++) {
             if (i == 0 || arr[i - 1] == arr[i]) {
-                cnt++;
+                ++cnt;
                 if (cnt >= maxCnt) {
                     maxCnt = cnt;
                 }
