@@ -12,7 +12,7 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         int count = 1;
-        int maxCount = 0;
+        int maxCount = 1;
 
         for(int i =  0 ; i < n ; i++){
             if(i != 0 && arr[i-1] * arr[i] > 0){ //연속한 수의 부호가 같을 때
