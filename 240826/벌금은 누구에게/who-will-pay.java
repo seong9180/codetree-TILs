@@ -22,7 +22,7 @@ public class Main {
                     if (penaltyStudents[j] >= k) {
                         exist = true;
                         System.out.println(penalties[i]);
-                        break;
+                        return;
                     }
                 }
             }
