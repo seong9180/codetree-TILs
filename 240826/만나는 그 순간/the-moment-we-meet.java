@@ -10,8 +10,10 @@ public class Main {
         int m = sc.nextInt();
         int[] arrA = new int[1000];
         int[] arrB = new int[1000];
-        int aTime = 0;
-        int bTime = 0;
+        arrA[0] = 0;
+        arrB[0] = 0;
+        int aTime = 1;
+        int bTime = 1;
         int aPos = 0;
         int bPos = 0;
 
@@ -45,9 +47,9 @@ public class Main {
             bTime += t;
         }
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 1; i < 1000; i++) {
             if (arrA[i] == arrB[i]) {
-                System.out.println(i+1);
+                System.out.println(i);
                 break;
             }
             if (i == 999) {
