@@ -47,14 +47,18 @@ public class Main {
             bTime += t;
         }
 
-        for (int i = 1; i < 1000; i++) {
+        int maxTime = Math.max(aTime, bTime);
+        boolean exist = false;
+
+        for (int i = 1; i < maxTime; i++) {
             if (arrA[i] == arrB[i]) {
                 System.out.println(i);
+                exist = true;
                 break;
             }
-            if (i == 999) {
-                System.out.println(-1);
-            }
+        }
+        if (!exist) {
+            System.out.println(-1);
         }
     }
 }
