@@ -63,11 +63,11 @@ public class Main {
         int bigTime = Math.max(aTime, bTime);
         //a 로봇과 b 로봇의 가동시간 비교 후, 가동시간이 짧은 로봇의 마지막 위치를 다른 로봇의 가동시간까지 유지해서 저장하기
         if (bigTime == aTime) {
-            for (int i = bTime; i <= bigTime; i++) {
+            for (int i = bTime; i < bigTime; i++) {
                 arrB[i] = arrB[bTime-1];
             }
         } else {
-            for (int i = aTime; i <= bigTime; i++) {
+            for (int i = aTime; i < bigTime; i++) {
                 arrA[i] = arrA[aTime-1];
             }
         }
