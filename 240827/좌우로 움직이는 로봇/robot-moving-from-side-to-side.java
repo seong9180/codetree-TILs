@@ -22,8 +22,8 @@ public class Main {
         int n = sc.nextInt();
         int m = sc.nextInt();
 
-        int[] arrA = new int[50000];
-        int[] arrB = new int[50000];
+        int[] arrA = new int[100000];
+        int[] arrB = new int[100000];
         arrA[0] = 0;
         arrB[0] = 0;
         int aPos = 0, bPos = 0;
