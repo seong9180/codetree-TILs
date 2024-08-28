@@ -46,20 +46,19 @@ public class Main {
 
                 if ((developersInfected[x] == 1 && developersCount[x] < k) || (developersInfected[y] == 1 && developersCount[y] < k)) { //둘 중 하나가 횟수가 남은 감염자라면
                     if (developersInfected[x] != 1 || developersInfected[y] != 1) { // 둘 중 하나가 감염자가 아니라면
-                        developersInfected[x] = 1;
-                        developersCount[x]++;
-                        developersInfected[y] = 1;
-                        developersCount[y]++;
+                        if (developersInfected[x] == 0) { //x 가 멀쩡, y 가 감염자라면
+                            developersInfected[x] = 1;
+                            developersCount[y] ++; //y 는 감염자라 횟수 카운트 증가
+                        } else { //X 가 감염자, Y 가 멀쩡하다면
+                            developersInfected[y] = 1;
+                            developersCount[x] ++;
+                        }
                     } else { //둘다 이미 감염자였다면
                         //악수 횟수만 증가
                         developersCount[x]++;
                         developersCount[y]++;
                     }
                 } else if ((developersInfected[x] == 1 && developersCount[x] >= k) || (developersInfected[y] == 1 && developersCount[y] >= k)) { //둘 중 하나가 악수 전염 횟수가 다 된 감염자라면
-                    //악수 횟수만 증가
-                    developersCount[x]++;
-                    developersCount[y]++;
-                } else {
                     //악수 횟수만 증가
                     developersCount[x]++;
                     developersCount[y]++;
