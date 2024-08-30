@@ -35,17 +35,15 @@ public class Main {
         // DP 진행
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < n; j++) {
-                int minFromTop = Math.min(dp[i-1][j][0], grid[i][j]);
-                int minFromLeft = Math.min(dp[i][j-1][0], grid[i][j]);
-                int maxFromTop = Math.max(dp[i-1][j][1], grid[i][j]);
-                int maxFromLeft = Math.max(dp[i][j-1][1], grid[i][j]);
+                int diffFromTop = dp[i-1][j][1] - dp[i-1][j][0];
+                int diffFromLeft = dp[i][j-1][1] - dp[i][j-1][0];
                 
-                if (maxFromTop - minFromTop <= maxFromLeft - minFromLeft) {
-                    dp[i][j][0] = minFromTop;
-                    dp[i][j][1] = maxFromTop;
+                if (diffFromTop <= diffFromLeft) {
+                    dp[i][j][0] = Math.min(dp[i-1][j][0], grid[i][j]);
+                    dp[i][j][1] = Math.max(dp[i-1][j][1], grid[i][j]);
                 } else {
-                    dp[i][j][0] = minFromLeft;
-                    dp[i][j][1] = maxFromLeft;
+                    dp[i][j][0] = Math.min(dp[i][j-1][0], grid[i][j]);
+                    dp[i][j][1] = Math.max(dp[i][j-1][1], grid[i][j]);
                 }
             }
         }
