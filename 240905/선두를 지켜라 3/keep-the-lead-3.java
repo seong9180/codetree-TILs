@@ -12,28 +12,21 @@ public class Main {
     public static int CountLeader(int totalT) {
         int t = totalT;
         int count = 0;
-        int isLeader; // 공동 리더 :0, a 리더 : 1, b 리더 : 2
-        boolean isLeaderChanged = false;
-        //그래프의 시작(t=1) 일떄 리더를 정의. (맨 처음 리더는 카운트 횟수에 포함되지 않음.
-        //리더가 "변경" 된 횟수를 파악하는 것이기 때문에
-        if (arrA[1] > arrB[1]) {
-            isLeader = 1;
-        } else if (arrA[1] < arrB[1]) {
-            isLeader = 2;
-        } else {
-            isLeader = 0;
-        }
+        int isLeader = 0; // 공동 리더 :0, a 리더 : 1, b 리더 : 2
 
-        for (int i = 1; i <= t; i++) { //원점에서는 카운트하지 않으니 time = 1 부터 선두 카운트
+        for (int i = 1; i < t; i++) { //원점에서는 카운트하지 않으니 time = 1 부터 선두 카운트
             if (arrA[i] > arrB[i] && isLeader != 1) { //a 가 명예의 전당에 있지 않고 선두로 올라섰을 때. (공동 명예의 전당 제외)
                 isLeader = 1;
                 count ++;
+                //System.out.println("a 가 명예의 전당 입성 : " + i);
             } else if (arrA[i] < arrB[i] && isLeader != 2) {
                 isLeader = 2;
                 count ++;
+                //System.out.println("b 가 명예의 전당 입성 : " + i);
             } else if (arrA[i] == arrB[i] && isLeader != 0) {
                 isLeader = 0;
                 count ++;
+                //System.out.println("a,b 가 명예의 전당 입성 : " + i);
             }
         }
 
@@ -59,7 +52,7 @@ public class Main {
             int t = sc.nextInt(); //시간
 
             for (int j = 1; j <= t; j++) {
-                posA = aTime * v;
+                posA += v;
                 arrA[aTime] = posA;
                 aTime ++;
             }
@@ -70,7 +63,7 @@ public class Main {
             int t = sc.nextInt(); //시간
 
             for (int j = 1; j <= t; j++) {
-                posB = bTime * v;
+                posB += v;
                 arrB[bTime] = posB;
                 bTime ++;
             }
