@@ -13,7 +13,7 @@ public class Main {
     //30 31 32 33
 
     public static boolean inRange(int x , int y) {
-        return x >= 0 && x < n && y >= 0 && y < m;
+        return x >= 0 && x < m && y >= 0 && y < n;
     }
 
     public static void main(String[] args) {
