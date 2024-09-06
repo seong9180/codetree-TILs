@@ -13,7 +13,7 @@ public class Main {
     //30 31 32 33
 
     public static boolean inRange(int x , int y) {
-        return x >= 0 && x < m && y >= 0 && y < n;
+        return x >= 0 && x < n && y >= 0 && y < m;
     }
 
     public static void main(String[] args) {
@@ -40,7 +40,7 @@ public class Main {
                     nx = x + dx[dirNum];
                     ny = y + dy[dirNum];
 
-                    if (arr[nx][ny] != 0) { //방향 전환 이후에도 nx,ny 자리에 어떤 값이 있다면.
+                    if (!inRange(nx,ny) || arr[nx][ny] != 0) { //방향 전환 이후에도 nx,ny 자리에 어떤 값이 있다면.
                         break; //종료
                     }
                 }
