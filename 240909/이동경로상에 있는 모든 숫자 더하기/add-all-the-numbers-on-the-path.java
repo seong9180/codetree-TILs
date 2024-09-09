@@ -30,8 +30,8 @@ public class Main {
             }
         }
         //시작 위치 = 중심 n 은 홀수
-        int x = n - 2;
-        int y = n - 2;
+        int x = n / 2;
+        int y = n / 2;
 
         int sum = arr[x][y]; //총합을 더할 변수 : 시작좌표인 중심 값에서부터 시작
         //명령에 따라 이동 혹은 방향 전환
