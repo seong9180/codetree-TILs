@@ -37,7 +37,7 @@ public class Main {
         }
 
         int minDistance = distance;
-        for (int i = 1; i < n - 2; i++) {
+        for (int i = 1; i < n - 1; i++) {
             int skipDistance = distance
                     - calcDistance(arrX[i - 1], arrX[i], arrY[i - 1], arrY[i])
                     - calcDistance(arrX[i], arrX[i + 1], arrY[i], arrY[i + 1])
