@@ -56,6 +56,10 @@ public class Main {
             }
         }
 
-        System.out.println(maxTotal);
+        if (maxTotal == 0) { //maxTotal == 0 이라는 건, carry 를 피하는 조합이 없다는 뜻
+            System.out.println(-1);
+        }else{
+            System.out.println(maxTotal);
+        }
     }
 }
