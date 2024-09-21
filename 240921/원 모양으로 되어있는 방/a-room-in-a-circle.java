@@ -30,7 +30,7 @@ public class Main {
         // 반시계 방향 순서로 방 번호를 배치한다고 가정.
         // 사람들은 (방 번호) + 1 / (방 갯수) 로 이동.
 
-        int minCount = 100 * 1003; //각 방 최대 인원 * 방 최대 갯수
+        int minCount = 100 * 1003 * 1003; //각 방 최대 인원 * 방 최대 갯수
         for (int i = 0; i < n; i++) {
             //i = room number
             minCount = Math.min(fillEveryRoom(i, totalPeople), minCount);
