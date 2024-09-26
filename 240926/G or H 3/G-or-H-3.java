@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static int n,k;
     public static final int MAX_N = 100;
-    public static final int MAX_P = 1000000;
+    public static final int MAX_P = 10000;
     public static char[] arr = new char[MAX_P];
 
     public static void main(String[] args) {
