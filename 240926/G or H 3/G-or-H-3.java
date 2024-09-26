@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static int n,k;
     public static final int MAX_N = 100;
-    public static char[] arr = new char[MAX_N];
+    public static final int MAX_P = 1000000;
+    public static char[] arr = new char[MAX_P];
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -22,7 +23,7 @@ public class Main {
 
         int totalMax = 0;
 
-        for (int i = 0; i < 100 - k ; i++) {
+        for (int i = 0; i < MAX_P - k ; i++) {
             int sum = 0;
             for (int j = i; j <= i + k ; j++) {
                 if (arr[j] == 'G') {
@@ -37,3 +38,5 @@ public class Main {
         System.out.println(totalMax);
     }
 }
+
+//arr[99] - max. k = 6 > 100 - k i < 94 93 94 95 96 97 98 99
