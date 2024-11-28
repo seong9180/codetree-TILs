@@ -18,7 +18,7 @@ public class Main {
 
         int minPrice = 2000;
 
-        for (int i = 0; i < n - t; i++) {
+        for (int i = 0; i <= n - t; i++) {
             int price = 0;
             for (int j = 0; j < t; j++) {
                 price += Math.abs(field[i + j] - h);
