@@ -9,6 +9,10 @@ public class Main {
         int start = (11*24 + 11)*60 + 11;
         int end = (A*24 + B)*60 + C;
         
-        System.out.println(end - start);
+        if(start > end){
+            System.out.println(-1);
+        }else{
+            System.out.println(end - start);
+        }
     }
 }
