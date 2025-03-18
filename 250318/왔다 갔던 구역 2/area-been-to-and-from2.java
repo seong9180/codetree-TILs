@@ -5,23 +5,20 @@ public class Main {
         int N = sc.nextInt();
         int pos = 1000; // 좌우로 10 * 100 이동 가능하기 때문에 시작점을 1000으로 변경
 
-        int[] line = new int[2000];
+        int[] line = new int[2001];
 
         for (int i = 0; i < N; i++) {
             int x = sc.nextInt();
             char dir = sc.next().charAt(0);
-            
-            if(dir == 'L'){//left == minus 
-                for(int j = pos - 1; j >= pos - x; j--){ //시작점 중복을 피하기 위해 -1부터 카운트
-                    line[j]++;
-                }
-                pos -= x;
-            }else{//right == plus
-                for(int j = pos + 1; j <= pos + x; j++){ //시작점 중복을 피하기 위해 +1부터 카운트
-                    line[j]++;
-                }
-                pos += x;
+    
+            int newPos = (dir == 'L') ? pos - x : pos + x;
+            int minPos = Math.min(pos, newPos);
+            int maxPos = Math.max(pos, newPos);
+    
+            for(int j = minPos; j < maxPos; j++){
+                line[j]++;
             }
+            pos = newPos;
         }
 
         int cnt = 0; //2번 이상 지나긴 지역을 세는 변수
