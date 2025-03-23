@@ -35,7 +35,7 @@ public class Main {
             char dir = sc.next().charAt(0);
 
             if(dir == 'L'){
-                for(int j = pos; j > pos - x; j--){
+                for(int j = pos - 1; j >= pos - x; j--){
                     area[j]++;
                 }
 
