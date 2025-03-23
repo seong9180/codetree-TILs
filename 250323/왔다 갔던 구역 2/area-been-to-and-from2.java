@@ -51,7 +51,7 @@ public class Main {
         }
 
         int visitedTwiceCount = 0;
-        for(int i = 0 ; i < range; i++){
+        for(int i = 0 ; i <= range; i++){
             if(area[i] >= 2){
                 visitedTwiceCount++;
             }
