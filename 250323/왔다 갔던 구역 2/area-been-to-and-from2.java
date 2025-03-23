@@ -33,6 +33,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             int x = sc.nextInt();
             char dir = sc.next().charAt(0);
+            //겹치는 구역 : 우측으로 이동할 땐 끝점 카운트 x, 좌측으로 이동할 땐 시작점 카운트 x
 
             if(dir == 'L'){
                 for(int j = pos - 1; j >= pos - x; j--){
